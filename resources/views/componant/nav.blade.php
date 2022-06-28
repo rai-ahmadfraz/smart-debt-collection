@@ -148,9 +148,11 @@
           <li class="nav-item">
             <a href="{{ url('home') }}" class="nav-link"><i class="link-icon icon-disc"></i><span class="menu-title">Reports</span></a>
           </li>
+          @if(Auth::user()->role)
           <li class="nav-item">
             <a href="{{ url('accounts') }}" class="nav-link"><i class="link-icon icon-credit-card"></i><span class="menu-title">Open Account</span></a>
           </li>
+          @endif
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="link-icon icon-wallet"></i><span class="menu-title">Logout</span></a>
           </li>

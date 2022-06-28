@@ -27,6 +27,18 @@ class DebtorController extends Controller
         return view('user.debtor.index')->with('debtors',Debtor::where('id',$id)->first());
 
     }
+    public function changeUserRole($id)
+    {
+        logger($id);
+        return redirect()->back();
+        // return view('user.debtor.index')->with('debtors',Debtor::where('id',$id)->first());
+
+    }
+    public function deleteUser($id)
+    {
+        // return view('user.debtor.index')->with('debtors',Debtor::where('id',$id)->first());
+
+    }
 
     public function store(Request $request)
     {

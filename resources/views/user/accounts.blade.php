@@ -5,128 +5,32 @@
     <div class="container-fluid page-body-wrapper">
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="row">
-                    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-                        <div class="card bg-dark text-white border-0">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <p style="border-bottom: 1px solid;"> User detail</p>
-                                </div>
-                                <table class="  table-borderless">
-                                    <thead>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Name:</td>
-                                            <td>{{ Auth::user()->name }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Contact:</td>
-                                            <td>3298932889</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Email:</td>
-                                            <td>{{ Auth::user()->email }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-6 grid-margin stretch-card">
-                        <div class="card bg-primary text-white border-0">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <p style="border-bottom: 1px solid;"> Daily Status</p>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <table class="table-borderless">
-
-                                            <tbody>
-                                                <tr>
-                                                    <td>#Of Calls:</td>
-                                                    <td>0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#Of SMS:</td>
-                                                    <td>0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#Of Email:</td>
-                                                    <td>0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#Of Accounts:</td>
-                                                    <td>0</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <table class="table-borderless">
-                                            <tbody>
-                                                <tr>
-                                                    <td>#Of RTP:</td>
-                                                    <td>0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#Of AOD:</td>
-                                                    <td>0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#Of PTPs:</td>
-                                                    <td>0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#Of RCP:</td>
-                                                    <td>0</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-                        <div class="card bg-success text-white border-0">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <p style="border-bottom: 1px solid;"> Reminders</p>
-                                </div>
-                                <table class="table-borderless">
-                                    <tbody>
-                                        <tr>
-                                            <td>#Of Failed PTP's:</td>
-                                            <td>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#Of Pre Term:</td>
-                                            <td>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td># AOD:</td>
-                                            <td>0</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="card">
+                    @if (\Session::has('success'))
+                        <div class="alert alert-success">
+                            <ul>
+                                <li>{!! \Session::get('success') !!}</li>
+                            </ul>
+                        </div>
+                    @endif
                     <div class="card-body">
+                    <div class="row">
+                            <div class="col-12 text-right">
+                                <a href="{{ route('addNewUser') }}" class="btn btn-primary">Add User/Admin</a>
+                            </div>
+                        </div>
                         <h4 class="card-title">Users</h4>
                         <div class="row">
                             <div class="col-12 table-responsive">
                                 <table id="order-listing" class="table">
-                                    <thead>
+                                <thead>
                                         <tr>
                                             <th>ID</th>
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Role</th>
+                                            <th>Contact</th>
+                                            <th>Address</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -136,12 +40,21 @@
                                             <td>{{$user->id}}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
+                                            <td><label class="badge badge-info">{{ $user->role ? 'Admin':'User' }}</label></td>
+                                            <td>{{ $user->contact_no }}</td>
+                                            <td title="{{ $user->address }}">{{ \Illuminate\Support\Str::limit($user->address, 10, $end='...') }}</td>
                                             <td>
-                                                <label class="badge badge-info">{{ $user->role ? 'Admin':'User' }}</label>
-                                            </td>
-                                            <td>
-                                               <a href="{{ url('debtor/detail',$user->id) }}"> <button class="btn btn-outline-primary">View</button></a>
-                                               <a href="{{ url('debtor/detail',$user->id) }}"> <button class="btn btn-outline-danger">Delete</button></a>
+                                                <div class="row action-row">
+                                                    <div class="col-md64">
+                                                        <a href="{{ url('accounts/change-role',$user->id) }}"> <button class="btn btn-outline-primary">Change Role</button></a> <br>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <a href="{{ url('accounts/delete-user',$user->id) }}"> <button class="btn btn-outline-danger">Delete</button></a>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                    <a href="{{ url('accounts/update-user-detail',$user->id) }}"> <button class="btn btn-outline-info">Edit</button></a>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -153,11 +66,13 @@
                 </div>
             </div>
            @include('componant.footer')
-
         </div>
-
     </div>
-
+    <style>
+        .action-row a button{
+            padding: 10px !important;
+        }
+    </style>
 @endsection
 @section('script')
     <script src="{{ url('js/data-table.js') }}"></script>
