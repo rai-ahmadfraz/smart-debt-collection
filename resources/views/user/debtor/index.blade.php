@@ -9,7 +9,6 @@
     .my-model-size{
         max-width: 60%;
     }
-
 </style>
 @endsection
 @section('content')
@@ -31,7 +30,7 @@
                         <div class="card bg-dark text-white border-0">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
-                                    <p style="border-bottom: 1px solid;"> User detail</p>
+                                    <p style="border-bottom: 1px solid;">User detail</p>
                                 </div>
                                 <table class="table-borderless">
                                     <tbody>
@@ -107,7 +106,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-6 col-lg-3 grid-margin stretch-card">
                         <div class="card bg-success text-white border-0">
                             <div class="card-body">
