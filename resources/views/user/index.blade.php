@@ -5,16 +5,16 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="row">
-                    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
+                    <div class="col-md-6 col-lg-4 grid-margin stretch-card">
                         <div class="card bg-dark text-white border-0">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
                                     <p style="border-bottom: 1px solid;"> User detail</p>
                                 </div>
-                                <table class="  table-borderless">
+                                <table class="table-borderless">
                                     <tbody>
                                         <tr>
-                                            <td>name:</td>
+                                            <td>Name:</td>
                                             <td>{{ Auth::user()->name }}</td>
                                         </tr>
                                         <tr>
@@ -22,15 +22,19 @@
                                             <td>{{ Auth::user()->contact_no }}</td>
                                         </tr>
                                         <tr>
-                                            <td>email:</td>
+                                            <td>Email:</td>
                                             <td>{{ Auth::user()->email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address:</td>
+                                            <td>{{ Auth::user()->address }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 col-lg-6 grid-margin stretch-card">
+                    <div class="col-md-12 col-lg-5 grid-margin stretch-card">
                         <div class="card bg-primary text-white border-0">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
