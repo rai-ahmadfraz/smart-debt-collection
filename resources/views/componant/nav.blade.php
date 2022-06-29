@@ -156,7 +156,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="link-icon icon-wallet"></i><span class="menu-title">Logout</span></a>
           </li>
-          <!-- <li class="nav-item mega-menu">
+          <li class="nav-item mega-menu">
             <a href="#" class="nav-link"><i class="link-icon icon-film"></i><span class="menu-title">RTP</span><i class="menu-arrow"></i></a>
             <div class="submenu">
               <div class="col-group-wrapper row">
@@ -334,7 +334,7 @@
               </div>
             </div>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link"><i class="link-icon icon-calculator"></i><span class="menu-title">EXCLUSSIONS</span><i class="menu-arrow"></i></a>
             <div class="submenu">
               <ul class="submenu-item">
@@ -344,8 +344,8 @@
                 <li class="nav-item"><a class="nav-link" href="pages/apps/gallery.html">Gallery</a></li>
               </ul>
             </div>
-          </li>
-          
+          </li> -->
+          <!-- 
           <li class="nav-item">
             <a href="index.html" class="nav-link"><i class="link-icon icon-user"></i><span class="menu-title">USER</span></a>
           </li>

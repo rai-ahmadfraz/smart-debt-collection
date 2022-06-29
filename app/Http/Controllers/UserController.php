@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\User;
@@ -8,13 +7,10 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function __construct(){}
-    public function openAccount()
-    {
+    public function openAccount(){
         return view('user.accounts')->with('users',User::all());
     }
     public function addNewUser(){
-
         return view('user.create_user');
     }
     public function storeNewUser(Request $request){
@@ -62,8 +58,7 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Something went wrong');
         }
     }
-    public function changeUserRole($id)
-    {
+    public function changeUserRole($id){
         $user = User::where('id',$id)->first();
         if($user){
             if($user->role){
@@ -75,14 +70,11 @@ class UserController extends Controller
         }
         return redirect()->back()->with('success', 'User role changed successfully');
     }
-    public function deleteUser($id)
-    {
+    public function deleteUser($id){
         $user = User::where('id',$id)->first();
         if($user){
             $user->delete();
         }
         return redirect()->back()->with('success', 'User deleted successfully');
-
     }
-
 }
